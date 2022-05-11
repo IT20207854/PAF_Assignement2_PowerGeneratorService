@@ -14,7 +14,7 @@ public class PowerGenerator {
 			Class.forName("com.mysql.jdbc.Driver"); 
 				 
 			//Provide the correct details: DBServer/DBName, username, password 
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/electro_grid", "root", ""); 
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paf", "root", ""); 
 		} 
 		catch (Exception e) 
 		{
@@ -24,7 +24,7 @@ public class PowerGenerator {
 	} 
 		
 	//insert
-	public String addPowerGenerator(String gCode, String gName, String gType, String gLocation, String gUnitPrice, java.sql.Date gRegDate) 
+	public String addPowerGenerator(String gCode, String gName, String gType, String gLocation, String gUnitPrice, String gRegDate) 
 	{ 
 		String output = ""; 
 		try
@@ -36,7 +36,8 @@ public class PowerGenerator {
 			} 
 			 
 			// create a prepared statement
-			String query = " insert into powergenerators (`gID`,`gCode`,`gName`,`gType`,`gLocation`, `gUnitPrice`, gRegDate)\" + \" values (?, ?, ?, ?, ?, ?, ?)"; 
+			String query = " insert into powergenerators (`gID`,`gCode`,`gName`,`gType`,`gLocation`, `gUnitPrice`, gRegDate)" + " values (?, ?, ?, ?, ?, ?, ?)"; 
+			
 			PreparedStatement preparedStmt = con.prepareStatement(query); 
 			// binding values
 			preparedStmt.setInt(1, 0); 
@@ -45,15 +46,15 @@ public class PowerGenerator {
 			preparedStmt.setString(4, gType); 
 			preparedStmt.setString(5, gLocation); 
 			preparedStmt.setDouble(6, Double.parseDouble(gUnitPrice)); 
-			java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-			preparedStmt.setDate(7, sqlDate);
-			//preparedStmt.setDate(7, gRegDate); 
+			//java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+			//preparedStmt.setDate(7, sqlDate);
+			preparedStmt.setString(7, gRegDate); 
 						
 			//validations
-			if(gCode.isEmpty()||gName.isEmpty()||gType.isEmpty()||gLocation.isEmpty()||gUnitPrice.isEmpty()) 
+			/*if(gCode.isEmpty()||gName.isEmpty()||gType.isEmpty()||gLocation.isEmpty()||gUnitPrice.isEmpty()) 
 			{
 				return "Please provide values for all fields";
-			}
+			}*/
 			
 			// execute the statement
 			preparedStmt.execute(); 
@@ -108,13 +109,13 @@ public class PowerGenerator {
 					 output += "<td>" + gType + "</td>"; 
 					 output += "<td>" + gLocation + "</td>"; 
 					 output += "<td>" + gUnitPrice + "</td>"; 
-					 output += "<td>" + gRegDate + "</td>";  
+					 output += "<td>" + gRegDate + "</td>";
 					
 					 // buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update' "
-					+ "class='btnUpdate btn btn-secondary' data-itemid='" + gID + "'></td>"
+					+ "class='btnUpdate btn btn-secondary' data-gid='" + gID + "'></td>"
 					+ "<td><input name='btnRemove' type='button' value='Remove' "
-					+ "class='btnRemove btn btn-danger' data-itemid='" + gID + "'></td></tr>"; 
+					+ "class='btnRemove btn btn-danger' data-gid='" + gID + "'></td></tr>"; 
 				} 
 				 con.close(); 
 				 // Complete the html table
