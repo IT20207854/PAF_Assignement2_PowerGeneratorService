@@ -41,48 +41,47 @@
 	<h1 align="center">Power Generator Management</h1>
 	<div class="container">
 		<div class="row">
-		<div class="col-13">
-				<div id="divPGGrid"">
-			 	<%
-				 	PowerGenerator pGen = new PowerGenerator(); 
-				 	out.print(pGen.readPowerGenerators()); 
-			 	%>
-				</div>
-				<br>
-		</div> 
-		
-		<div class="col-8" style="background-color:#e6b3cc"> 
+			<div class="col-13">
+					<div id="divPGGrid"">
+				 	<%
+					 	PowerGenerator pGen = new PowerGenerator(); 
+					 	out.print(pGen.readPowerGenerators()); 
+				 	%>
+					</div>
+					<br>
+			</div> 
+			
+			<div class="col-8" style="background-color:#e6b3cc"> 
 				<br>
 				<form id="formPowerGenerators" name="formPowerGenerators">
 				<h4 align="center">NEW POWER GENERATOR</h4><br>
-			 		<b>Power Generator code (format:gxxxx):</b> 
-			 		<input id="gCode" name="gCode" type="text" class="form-control form-control-sm">
-			 		<br> 
-			 		<b>Power Generator name:</b> 
-			 		<input id="gName" name="gName" type="text" class="form-control form-control-sm">
-			 		<br> 
-			 		<b>Power Generator Type:</b>
-			 		<input id="gType" name="gType" type="text" class="form-control form-control-sm">
-			 		<br> 
-			 		<b>Power Generator Location:</b>
-			 		<input id="gLocation" name="gLocation" type="text" class="form-control form-control-sm">
-			 		<br> 
-			 		<b>Unit Price:</b>
-			 		<input id="gUnitPrice" name="gUnitPrice" type="text" class="form-control form-control-sm">
-			 		<br> 
-			 		<b>Registered Date:</b>
-			 		<input id="gRegDate" name="gRegDate" type="date" class="form-control form-control-sm">
-			 		<br>
+				 <b>Power Generator code (format:gxxxx):</b> 
+				 <input id="gCode" name="gCode" type="text" class="form-control form-control-sm">
+				 <br> 
+				 <b>Power Generator name:</b> 
+				 <input id="gName" name="gName" type="text" class="form-control form-control-sm">
+				 <br> 
+				 <b>Power Generator Type:</b>
+				 <input id="gType" name="gType" type="text" class="form-control form-control-sm">
+				 <br> 
+				 <b>Power Generator Location:</b>
+			 	 <input id="gLocation" name="gLocation" type="text" class="form-control form-control-sm">
+			 	 <br> 
+			 	 <b>Unit Price:</b>
+			 	 <input id="gUnitPrice" name="gUnitPrice" type="text" class="form-control form-control-sm">
+			 	 <br> 
+			 	 <b>Registered Date:</b>
+			 	 <input id="gRegDate" name="gRegDate" type="date" class="form-control form-control-sm">
+			 	 <br>
 	 		
-	 				<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
-	 				<input type="hidden" id="hidgIDSave" name="hidgIDSave" value="">
-				</form>
-				<br>
+	 			 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
+	 			 <input type="hidden" id="hidgIDSave" name="hidgIDSave" value="">
+				 </form>
+				 <br>
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 				<br>
-		</div>
-		
+			</div>
 		</div>
 	</div> 
 	
