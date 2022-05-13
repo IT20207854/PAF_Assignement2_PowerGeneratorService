@@ -12,26 +12,26 @@
 		<script src="Components/jquery-3.6.0.min.js"></script>
 		<script src="Components/PowerGenerator.js"></script>
 		<style>
-		tr:nth-child(even) {
- 			 background-color:rgb(255, 245, 147);
-		}
-		tr:nth-child(odd) {
- 			 background-color:rgb(255, 245, 147);
-		}
-		table {
-  			border-collapse: collapse;
-  			width: 100%;
-		}
-		th, td {
-		  padding: 8px;
-		  text-align: left;
-		  border-bottom: 2px solid black;
-		  border-left: 0.5px solid #ddd;
-		  border-right: 0.5px solid #ddd;
-		  border-top: 2px solid black;
-		}
-		
-		tr:hover {background-color:#ffb366;}
+			tr:nth-child(even) {
+	 			 background-color:rgb(255, 245, 147);
+			}
+			tr:nth-child(odd) {
+	 			 background-color:rgb(255, 245, 147);
+			}
+			table {
+	  			border-collapse: collapse;
+	  			width: 100%;
+			}
+			th, td {
+			  padding: 8px;
+			  text-align: left;
+			  border-bottom: 2px solid black;
+			  border-left: 0.5px solid #ddd;
+			  border-right: 0.5px solid #ddd;
+			  border-top: 2px solid black;
+			}
+			
+			tr:hover {background-color:#ffb366;}
 		
 		</style>
 </head>
