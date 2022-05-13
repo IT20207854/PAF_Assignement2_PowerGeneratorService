@@ -49,12 +49,6 @@ public class PowerGenerator {
 			//java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
 			//preparedStmt.setDate(7, sqlDate);
 			preparedStmt.setString(7, gRegDate); 
-						
-			//validations
-			/*if(gCode.isEmpty()||gName.isEmpty()||gType.isEmpty()||gLocation.isEmpty()||gUnitPrice.isEmpty()) 
-			{
-				return "Please provide values for all fields";
-			}*/
 			
 			// execute the statement
 			preparedStmt.execute(); 
@@ -84,9 +78,9 @@ public class PowerGenerator {
 					 return "Error while connecting to the database for reading."; 
 				 } 
 				 // Prepare the html table to be displayed
-				 output = "<table border='1'><tr><th>Power Generator Code</th>" 
-				 + "<th>ower Generator Name</th><th>Power Generator Type</th>"
-				 + "<th>Power Generator Location</th>><th>Unit Price</th>" 
+				 output = "<table><tr><th>Power Generator Code</th>" 
+				 + "<th>Power Generator Name</th><th>Type</th>"
+				 + "<th>Location</th>><th>Unit Price</th>" 
 				 + "<th>Registered Date</th>"
 				 + "<th>Update</th><th>Remove</th></tr>"; 
 				 String query = "select * from powergenerators"; 
@@ -219,43 +213,41 @@ public class PowerGenerator {
 	
 	
 	//update
-	public String updatePowerGenerator(String gID, String gCode, String gName, String gType, String gLocation, String gUnitPrice, String gRegDate) 
+	public String updatePowerGenerator(String ID, String code, String name, String type, String location, String unitPrice, String regDate) 
 	{ 
 		String output = ""; 
 		try
 		{ 
 			Connection con = connect(); 
 			if (con == null) 
-			{ 
+			{
 				return "Error while connecting to the database for updating."; 
 			} 
-			// create a prepared statement
-			String query = "UPDATE powergenerators SET gCode=?,gName=?,gType=?,gLocation=?,gUnitPrice=?,gRegDate=?  WHERE gID=?";
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
-			
-			// binding values
-			preparedStmt.setInt(1, Integer.parseInt(gID)); 
-			preparedStmt.setString(2, gCode); 
-			preparedStmt.setString(3, gName);
-			preparedStmt.setString(4, gType);
-			preparedStmt.setString(5, gLocation);
-			preparedStmt.setDouble(6, Double.parseDouble(gUnitPrice)); 
-			preparedStmt.setString(7, gRegDate);  
+			 // create a prepared statement
+			 String query = "UPDATE powergenerators SET gCode=?, gName=?, gType=?, gLocation=?, gUnitPrice=?, gRegDate=? WHERE gID=?"; 
+			 PreparedStatement preparedStmt = con.prepareStatement(query); 
+			 // binding values
+			 preparedStmt.setString(1, code); 
+			 preparedStmt.setString(2, name); 
+			 preparedStmt.setString(3, type); 
+			 preparedStmt.setString(4, location); 
+			 preparedStmt.setDouble(5, Double.parseDouble(unitPrice)); 
+			 preparedStmt.setString(6, regDate);
+			 preparedStmt.setInt(7, Integer.parseInt(ID)); 
 			 
-			// execute the statement
-			preparedStmt.execute(); 
-			con.close(); 
-			String newPowerGenerators = readPowerGenerators(); 
-			output = "{\"status\":\"success\", \"data\": \"" + newPowerGenerators + "\"}"; 
-		} 
-		catch (Exception e) 
-		{ 
-			output = "{\"status\":\"error\", \"data\": \"Error while updating the power generator.\"}"; 
-			System.err.println(e.getMessage()); 
-		} 
-		
-		return output; 
-	} 
+			 // execute the statement
+			 preparedStmt.execute(); 
+			 con.close(); 
+			 String newPowerGenerators = readPowerGenerators(); 
+			 output = "{\"status\":\"success\", \"data\": \"" + newPowerGenerators + "\"}"; 
+	 } 
+	 catch (Exception e) 
+	 { 
+		 output = "{\"status\":\"error\", \"data\": \"Error while updating the power generator.\"}"; 
+		 System.err.println(e.getMessage()); 
+	 } 
+	 return output; 
+	 }
 
 	
 	

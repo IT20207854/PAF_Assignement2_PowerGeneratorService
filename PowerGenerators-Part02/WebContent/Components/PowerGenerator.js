@@ -7,13 +7,13 @@ $(document).on("click", "#btnSave", function(event)
 	 $("#alertError").hide(); 
 
 	// Form validation-------------------
-	/*var status = validatePowerGeneratorForm();
+	var status = validatePowerGeneratorForm();
 	if (status != true)
 	{
 		$("#alertError").text(status);
 		$("#alertError").show();
 		return;
-	}*/
+	}
 	
 	// If valid------------------------
 	var type = ($("#hidgIDSave").val() == "") ? "POST" : "PUT"; 
@@ -68,6 +68,12 @@ function validatePowerGeneratorForm()
 	 	return "Insert Power Generator Code."; 
 	} 
 	
+	// CODE
+	if (!($("#gCode").startsWith("g"))) 
+	{ 
+	 	return "Insert valid power generator code."; 
+	} 
+	
 	// NAME
 	if ($("#gName").val().trim() == "") 
 	{ 
@@ -86,7 +92,7 @@ function validatePowerGeneratorForm()
 	 	return "Insert Power Generator Location."; 
 	} 
 	
-	// PRICE-------------------------------
+	/*// PRICE-------------------------------
 	if ($("#gUnitPrice").val().trim() == "") 
 	{ 
 	 	return "Insert Unit Price."; 
@@ -98,7 +104,7 @@ function validatePowerGeneratorForm()
 	 	return "Insert a numerical value for Unit Price."; 
 	} 
 	// convert to decimal price
-	 $("#gUnitPrice").val(parseFloat(tmpPrice).toFixed(2)); 
+	 $("#gUnitPrice").val(parseFloat(tmpPrice).toFixed(2));*/
 	
 	// REGISTERED DATE------------------------
 	if ($("#gRegDate").val().trim() == "") 
@@ -111,14 +117,16 @@ function validatePowerGeneratorForm()
 
 
 // UPDATE==========================================
-$(document).on("click", ".btnUpdate", function(event) {
-	$("#hidgIDSave").val($(this).data("gid"));
-	$("#gCode").val($(this).closest("tr").find('td:eq(0)').text());
-	$("#gName").val($(this).closest("tr").find('td:eq(1)').text()); 
-	$("#gType").val($(this).closest("tr").find('td:eq(2)').text()); 
-	$("#gLocation").val($(this).closest("tr").find('td:eq(3)').text()); 
-	$("#gUnitPrice").val($(this).closest("tr").find('td:eq(4)').text()); 
-	$("#gRegDate").val($(this).closest("tr").find('td:eq(5)').text()); 
+$(document).on("click", ".btnUpdate", function(event) 
+{ 
+
+ $("#hidgIDSave").val($(this).data("gid")); 
+ $("#gCode").val($(this).closest("tr").find('td:eq(0)').text()); 
+ $("#gName").val($(this).closest("tr").find('td:eq(1)').text()); 
+ $("#gType").val($(this).closest("tr").find('td:eq(2)').text()); 
+ $("#gLocation").val($(this).closest("tr").find('td:eq(3)').text()); 
+ $("#gUnitPrice").val($(this).closest("tr").find('td:eq(4)').text()); 
+ $("#gRegDate").val($(this).closest("tr").find('td:eq(5)').text()); 
 });
 
 
