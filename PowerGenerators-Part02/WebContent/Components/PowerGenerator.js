@@ -171,4 +171,3 @@ function onPowerGeneratorDeleteComplete(response, status)
 		 $("#alertError").show(); 	
 	 } 
 }
-

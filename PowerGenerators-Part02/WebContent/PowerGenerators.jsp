@@ -42,7 +42,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-13">
-					<div id="divPGGrid"">
+					<div id="divPGGrid">
 				 	<%
 					 	PowerGenerator pGen = new PowerGenerator(); 
 					 	out.print(pGen.readPowerGenerators()); 
